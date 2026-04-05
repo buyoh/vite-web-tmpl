@@ -44,11 +44,11 @@ describe('CounterContainer', () => {
 
   it('-1ボタンをクリックすると値が減少する', () => {
     renderWithProvider(<CounterContainer />);
-    const decrementButton = screen.getByText('-1');
+    const decrementButton = screen.getByRole('button', { name: '-1' });
 
     fireEvent.click(decrementButton);
 
-    expect(screen.getByText('-1')).toBeInTheDocument();
+    expect(screen.getByText('-1', { selector: '.counter-value' })).toBeInTheDocument();
   });
 
   it('複数回操作すると正しい値が表示される', () => {
